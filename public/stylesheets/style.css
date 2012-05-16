@@ -154,14 +154,15 @@ a:visited {
 }
 .button {
   display: inline-block;
-  border: 1px solid #ddd;
-  background: #eee;
-  border-radius: 2px;
+  border: 1px solid #fff;
+  background: #89b556;
+  border-radius: 4px;
   height: 32px;
   line-height: 32px;
   overflow: none;
   vertical-align: top;
-  color: #333;
+  color: #FFF;
+  font-weight: bold;
   text-decoration: none;
   padding: 0 0.4em;
   font-size: 1.4em;
@@ -173,7 +174,11 @@ a:visited {
   -o-transition: border 2s;
 }
 .button:hover {
-  border: 1px solid #666;
+  border: 1px solid #7fff00;
+}
+.button:active {
+  background-color: #FC0;
+  border: 1px solid #7f0;
 }
 .button.opt {
   margin: 2px 0;
@@ -198,9 +203,8 @@ li.button.opt.off {
 }
 form {
   padding: 10px;
-  width: auto;
   margin: 10px auto;
-  width: 400px;
+  width: 60%;
   z-index: 99;
 }
 form div {
@@ -280,7 +284,7 @@ form div input {
   -o-transition: border 1s;
 }
 form div textarea{
-  width: 390px;
+  width: 90%;
   height: 200px;
 }
 form div input:invalid {
@@ -357,6 +361,62 @@ body header {
   width: 100%;
   height: 100%;
   z-index: 1;
+}
+.box{
+  width: 60%;
+  margin: 200px auto;
+  border-radius: 3px;
+  border: 1px solid #DDD;
+  background: #FFF;
+}
+.box p{
+  font-size: 16px;
+  margin: 20px 10px;
+}
+blockquote{
+  font-size: 85px;
+  font-weight: bold;
+  width: 60%;
+  text-align: left;
+  margin: 200px auto;
+}
+.typed{
+  font-family: 'Averia Libre';
+}
+.framed{
+  position: relative;
+  border: 10px solid #fff;
+  border-bottom-width: 60px;
+  margin: 200px auto;
+  background-image: linear-gradient(bottom, #c8c8c8 11%, #fff 56%);
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f5f5), to(#fff));
+  border-radius: 3px;
+  z-index: 5;
+}
+.framed:before,
+.framed:after{
+  content: "";
+  position: absolute;
+  z-index: 2;
+  bottom: 15px;
+  left: 5px;
+  width: 50%;
+  height: 20%;
+  -webkit-box-shadow: 0 15px 10px rgba(0,0,0,0.50);
+  -moz-box-shadow: 0 15px 10px rgba(0,0,0,0.50);
+  box-shadow: 0 15px 10px rgba(0,0,0,0.50);
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+.framed:after{
+  right: 5px;
+  left: auto;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  transform: rotate(2deg);
 }
 .sunburst {
   width: 100%;

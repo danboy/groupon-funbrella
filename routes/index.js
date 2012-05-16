@@ -17,5 +17,12 @@ var Root = {
 , new: function(req, res){
     res.render('new', { title: 'Send me something' })
   }
+, send: function(req, res){
+    if(req.body.content){
+      app.socket.on('connection', function(conn){
+        conn.write(req.body.content)
+      });
+    }
+  }
 }
 module.exports = Root;

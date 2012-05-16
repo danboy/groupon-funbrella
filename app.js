@@ -39,7 +39,9 @@ global.app = app;
 app.get('/', routes.index);
 app.get('/new', routes.new);
 app.get('/update', routes.new);
+app.post('/send', routes.send);
 
-app.listen(3000, function(){
+app.get('/test', function(req,res){res.render('test',{title: 'test'})})
+app.listen(3456, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
