@@ -351,26 +351,3 @@ body header {
   width: 100%;
   margin: 0 auto;
 }
-body section menu li,
-body header menu li {
-  list-style: none;
-  margin: 0;
-  display: inline-block;
-  margin: 0 2px;
-  line-height: 36px;
-  text-align: center;
-}
-body section {
-  padding: 10px;
-}
-body section ul {
-  list-style: none;
-  font-size: 1.6em;
-  margin-bottom: 1.25em;
-  margin-top: 1.25em;
-}
-body section p {
-  font-size: 1.6em;
-  margin-bottom: 1.25em;
-  margin-top: 1.25em;
-}
