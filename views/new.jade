@@ -19,3 +19,9 @@ script
     data = $('form textarea').val();
     sock.send(JSON.stringify(data));
   });
+  sock.onclose = function(c){
+    console.log(c);
+    sock = new SockJS(window.location.origin + '/gimmie/');
+  };
+style
+  .sunburst{display:none;}

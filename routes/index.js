@@ -6,7 +6,7 @@ var Root = {
   index: function(req, res){
     app.socket.on('connection', function(conn){
       app.socket.on('gimmie',function(data){
-        conn.write(JSON.stringify(data));
+        conn.write(data);
       });
       conn.on('data',function(message){
         app.socket.emit('gimmie', JSON.parse(message));
