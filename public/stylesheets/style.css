@@ -84,6 +84,7 @@ body {
   font-size: 62.5%;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   font-weight: normal;
+  overflow: hidden;
 }
 article,
 aside,
