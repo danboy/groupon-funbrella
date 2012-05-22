@@ -4,7 +4,7 @@
   , "private": true
   , "dependencies": {
       "express":    "2.5.8"
-    , "mongoose":   "2.x.x"
+    , "redis":      "0.x.x"
     , "jade":       "0.x.x"
     , "sockjs":     "0.x.x"
     , "underscore": "1.x.x"
