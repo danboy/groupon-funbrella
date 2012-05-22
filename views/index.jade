@@ -1,6 +1,7 @@
 <blockquote>Feed the funbrella</blockquote>
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
 script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
+script( src="/javascripts/main.js" )
 script
   var sock = new SockJS(window.location.origin + '/gimmie/');
   sock.onmessage = function(m){
@@ -19,5 +20,11 @@ script
   };
   sock.onclose = function(c){
     console.log(c);
-    sock = new SockJS(window.location.origin + '/gimmie/');
+    reconnect();
   };
+  var reconnect = function(){
+    if ( sock.readyState !== 1){
+      sock = new SockJS(window.location.origin + '/gimmie/');
+    }
+  }
+  setInterval(reconnect, 30000);

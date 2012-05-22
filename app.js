@@ -5,6 +5,7 @@
 var express   = require('express')
   , sockjs    = require('sockjs')
   , _         = require('underscore')
+  , mongoose  = require('mongoose')
   , backbone  = require('backbone')
   , routes    = require('./routes');
 
@@ -40,6 +41,7 @@ app.get('/', routes.index);
 app.get('/new', routes.new);
 app.get('/update', routes.new);
 app.post('/send', routes.send);
+app.post('/get', routes.get);
 
 app.get('/test', function(req,res){res.render('test',{title: 'test'})})
 app.listen(3456, function(){
