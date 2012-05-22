@@ -5,11 +5,13 @@
 var express   = require('express')
   , sockjs    = require('sockjs')
   , _         = require('underscore')
-  , mongoose  = require('mongoose')
+  , redis     = require('redis')
   , backbone  = require('backbone')
   , routes    = require('./routes');
 
 var app = module.exports = express.createServer();
+
+app.redis = redis.createClient();
 
 // Configuration
 

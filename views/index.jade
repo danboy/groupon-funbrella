@@ -3,28 +3,28 @@ script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
 script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
 script( src="/javascripts/main.js" )
 script
-  var sock = new SockJS(window.location.origin + '/gimmie/');
-  sock.onmessage = function(m){
-    var data = JSON.parse(m.data);
-    $('#style').remove();
-    if(data.html){
-      $('section').html(data.html)
-    }
-    if(data.js){
-      eval(data.js);
-    }
-    if(data.css){
-      var css = $('<style/>',{text: data.css, id: 'style'})
-      $('body').append(css);
-    }
-  };
-  sock.onclose = function(c){
-    console.log(c);
-    reconnect();
-  };
-  var reconnect = function(){
-    if ( sock.readyState !== 1){
-      sock = new SockJS(window.location.origin + '/gimmie/');
-    }
+  var sock;
+  var connect = function(){
+    sock = {};
+    sock = new SockJS(window.location.origin + '/gimmie/');
+    sock.onmessage = function(m){
+      var data = JSON.parse(m.data);
+      $('#style').remove();
+      if(data.html){
+        $('section').html(data.html)
+      }
+      if(data.js){
+        eval(data.js);
+      }
+      if(data.css){
+        var css = $('<style/>',{text: data.css, id: 'style'})
+        $('body').append(css);
+      }
+    };
+    sock.onclose = function(c){
+      console.log(c);
+    };
+    console.log("new socket:",sock);
   }
-  setInterval(reconnect, 30000);
+  connect();
+  setInterval(function(){if(sock.readyState != 1){connect()};}, 30000);
