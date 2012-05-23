@@ -420,13 +420,13 @@ margin: -619px 0 0 -170px;
 -moz-animation-timing-function:linear;
 }
 .sunburst b {
-display: block;
-width: 0;
-height: 0;
-border-width: 90px 1000px;
-margin: -180px 0 0 0;
-border-color: transparent #b1dc7a;
-border-style: solid;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 90px 1600px;
+  margin: -180px 0 0 0;
+  border-color: transparent #b1dc7a;
+  border-style: solid;
 }
 .sunburst b:nth-child(1) { -webkit-transform:rotate(20deg);  -moz-transform:rotate(20deg);  }
 .sunburst b:nth-child(2) { -webkit-transform:rotate(40deg);  -moz-transform:rotate(40deg);  }
@@ -473,7 +473,20 @@ ul li{
   width: 75%;
   text-align: center;
 }
+
 .loop,
 .infinite{
   -webkit-animation-iteration-count: infinite;
+}
+@-webkit-keyframes pulse { 
+  0% {-webkit-transform: scale(1) rotate(10deg); }
+  50% { -webkit-transform: scale(1.1) rotate(-10deg); }
+  100% { -webkit-transform: rotate(10deg);}
+}
+
+.sway{
+  -webkit-animation: pulse 10s linear infinite;
+}
+.slow{
+  -webkit-animation-duration: 10s;
 }
