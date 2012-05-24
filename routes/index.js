@@ -7,7 +7,7 @@ var Root = {
       app.socket.on('gimmie',function(data){
         console.log(data);
         conn.write(data);
-        app.redis.rpush("funbrella", data);
+        app.redis.sadd("funbrella", data);
       });
     });
     res.render('index', { title: 'it\'s like watching on the tv.' })

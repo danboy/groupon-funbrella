@@ -387,7 +387,7 @@ blockquote{
 .framed{
   position: relative;
   margin: 200px auto 20px;
-  padding: 20px 20px 60px;
+  padding: 10px 10px 60px;
   background-image: linear-gradient(bottom, #c8c8c8 11%, #fff 56%);
   background-image: -webkit-gradient(linear, left bottom, left top, from(#f5f5f5), to(#fff));
   border-radius: 3px;
@@ -487,6 +487,11 @@ ul li{
 .sway{
   -webkit-animation: pulse 10s linear infinite;
 }
-.slow{
-  -webkit-animation-duration: 10s;
+
+.animated.slow{
+	-webkit-animation-duration: 4s;
+}
+
+.animated.slower{
+	-webkit-animation-duration: 10s;
 }
