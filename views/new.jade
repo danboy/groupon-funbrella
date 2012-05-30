@@ -1,7 +1,13 @@
 form( action='/send', method='post' )
   div
     textarea
-      { "html": "<ul><li><img src='http://whiskey:3456/funbrella.png' class='animated pulse loop' /></li><li>remain calm.</li></ul>"
+      { "html": "
+      |<ul>
+      |  <li>
+      |    <img src='http://whiskey:3456/funbrella.png' class='animated pulse loop' />
+      |  </li>
+      |  <li class='animated flash loop'>remain calm.</li>
+      |</ul>"
       , "css": "ul li{ opacity:.5;}"
       , "js": "var slideshow = new Funbrella.list($('ul li'),4000);"}
   div.submit
@@ -15,16 +21,6 @@ form( action='/send', method='post' )
 
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
 script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
-script
-  var sock = new SockJS(window.location.origin + '/gimmie/');
-  $('#send').click(function(ev){
-    ev.preventDefault();
-    data = {"funbrella": $('form textarea').val()};
-    sock.send(JSON.stringify(data));
-  });
-  sock.onclose = function(c){
-    console.log(c);
-    sock = new SockJS(window.location.origin + '/gimmie/');
-  };
+script( src="/javascripts/new.js" )
 style
   .sunburst{display:none;}
