@@ -84,7 +84,6 @@ body {
   font-size: 62.5%;
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  overflow: hidden;
 }
 article,
 aside,
@@ -349,9 +348,6 @@ form div input[type="submit"]:hover.error {
 form.step2 {
   display: none;
 }
-body {
-  overflow-x: hidden;
-}
 body section,
 body header {
   width: 100%;
@@ -407,18 +403,18 @@ blockquote:nth-child(1n+2),
   background: #9ac168;
 }
 .sunburst .outer {
-width: 2000px;
-height: 910px;
-padding-top: 1090px;
-margin: -619px 0 0 -170px;
--webkit-animation-name: rotate1;
--webkit-animation-duration:5s;
--webkit-animation-iteration-count:infinite;
--webkit-animation-timing-function:linear;
--moz-animation-name: rotate1;
--moz-animation-duration:5s;
--moz-animation-iteration-count:infinite;
--moz-animation-timing-function:linear;
+  width: 2000px;
+  height: 910px;
+  padding-top: 1090px;
+  margin: -619px 0 0 -170px;
+  -webkit-animation-name: rotate1;
+  -webkit-animation-duration:5s;
+  -webkit-animation-iteration-count:infinite;
+  -webkit-animation-timing-function:linear;
+  -moz-animation-name: rotate1;
+  -moz-animation-duration:5s;
+  -moz-animation-iteration-count:infinite;
+  -moz-animation-timing-function:linear;
 }
 .sunburst b {
   display: block;
@@ -440,12 +436,12 @@ margin: -619px 0 0 -170px;
 .sunburst b:nth-child(9) { -webkit-transform:rotate(180deg); -moz-transform:rotate(180deg); }
 
 @-webkit-keyframes rotate1 {
-from { -webkit-transform: rotate(0deg); }
-to   { -webkit-transform: rotate(20deg); }
+  from { -webkit-transform: rotate(0deg); }
+  to   { -webkit-transform: rotate(20deg); }
 }
 @-moz-keyframes rotate1 {
-from { -moz-transform: rotate(0deg); }
-to   { -moz-transform: rotate(20deg); }
+  from { -moz-transform: rotate(0deg); }
+  to   { -moz-transform: rotate(20deg); }
 }
 .on-top {
   position: fixed;
@@ -475,6 +471,69 @@ ul li{
   text-align: center;
 }
 
+ul#previous{
+  margin: 20px auto;
+}
+ul#previous li{
+  border: 1px dotted #ccc;
+  background: #fff;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  margin: 10px auto;
+  padding: 20px 10px;
+}
+ul#previous li menu{
+  text-align: right;
+  margin: 0 -10px -20px 0;
+}
+ul#previous li menu li.button.opt{
+  display: inline-block;
+  width: auto;
+  padding: 2px 10px;
+  height: auto;
+  line-height: 20px;
+  margin: 0;
+  text-align: left;
+  background: linear-gradient(bottom, #333 37%, #666 69%);
+  background: -webkit-linear-gradient(bottom, #4F75dd 37%, #5F85ED 69%);
+  border: 1px solid #ddd;
+  border-radius: 2px;
+}
+ul#previous li menu li.button.opt a{
+  color: #FFF;
+  font-weight: bold;
+}
+/* WEATHER */
+h1.temp{
+  font-size: 200px;
+  margin-top: 10%;
+}
+h1.temp small{
+  font-size:80px;
+}
+img.icon{
+  width: 200px;
+  margin: 0 0 -20% 300px;
+  
+}
+ul.forecast{
+  margin-top: 60px;
+}
+ul.forecast li{
+  display: inline-block;
+  width: auto;
+  margin: 0 20px;
+}
+ul.forecast li figure img.icon{
+  width: 75px;
+  margin: 0;
+}
+ul.forecast li h2{
+  font-size: 50px;
+  text-align: center;
+}
+/* ANIMATE Add Ons. */
 .loop,
 .infinite{
   -webkit-animation-iteration-count: infinite;

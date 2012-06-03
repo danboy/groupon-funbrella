@@ -1,0 +1,15 @@
+ul#previous
+  - each result in results
+    li( data-value='#{result}')
+      = result
+      menu
+        li.button.opt
+          a.destroy destroy
+        li.button.opt
+          a.send send
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
+script( src="/javascripts/list.js" )
+style
+  .sunburst{display:none;}
+  body{overflow: auto;}

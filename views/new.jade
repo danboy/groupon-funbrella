@@ -18,9 +18,14 @@ form( action='/send', method='post' )
   p Blockquotes are good for putting text on the page.
   p Add {.sunburst:display:none;) if you want to hide it.
   p You can do a simple slideshow like so "var slideshow = new Funbrella.list($('ul li'),4000);" where 'ul li' is the selector for a list of items and 4000 is the timeout in milliseconds.
+.box
+  p Here's an example of getting the weather.
+  p
+    | { "html": "&lt;div class='neet'&gt;&lt;/div&gt;", "css": ".neet{ opacity:.8;}", "js": "var w = new Get.Weather('.neet');"}
 
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
 script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
 script( src="/javascripts/new.js" )
 style
   .sunburst{display:none;}
+  body section{position: static;}

@@ -1,9 +1,9 @@
-ul#test
-  li one
-  li two
-  li three
+.weather
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
 script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
 script( src="/javascripts/main.js" )
+script( src="/javascripts/weather.js" )
+script
+  var w = new Get.Weather('.weather');
 style
   .sunburst{display:none;}

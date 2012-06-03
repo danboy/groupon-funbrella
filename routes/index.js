@@ -24,6 +24,13 @@ var Root = {
 
     res.render('new', { title: 'Send me something' })
   }
+, list: function(req, res){
+    app.redis.smembers( 'funbrella', function(err,results){
+      if (err) throw err;
+      console.log(results);
+      res.render('list', {results: results, title: 'old stuffs'});
+    });
+  }
 , send: function(req, res){
   console.log(req.body);
     if(req.body.content){
