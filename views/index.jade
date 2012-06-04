@@ -15,7 +15,11 @@ script
         $('section').html(data.html)
       }
       if(data.js){
+        try{
         eval(data.js);
+        }catch(e){
+          console.log(e);
+        }
       }
       if(data.css){
         var css = $('<style/>',{text: data.css, id: 'style'})
