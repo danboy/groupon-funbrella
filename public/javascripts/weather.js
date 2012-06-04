@@ -22,7 +22,8 @@ Get.Weather.prototype = {
     fragment.append(this.getForecast(fc));
     cb(fragment);
   }
-, getIcon: function(icon){
+, getIcon: function(icon, time){
+    var time = time || 'day';
     var iconMap = { 'chancerain': ['shower1.png']
                   , 'chancetstorms': ['tstorm1.png']
                   , 'clear': ['sunny.png']
@@ -39,7 +40,8 @@ Get.Weather.prototype = {
                   , 'sunny': ['sunny.png']
                   , 'tstorms': ['tstorm2.png'] }
     var path = '/images/weather/tick/';
-    return $('<img/>',{'class': 'icon', src: path+iconMap[icon][Math.floor(Math.random()*iconMap[icon].length)]});
+    var version = (time == 'day') ? '0' : '1';
+    return $('<img/>',{'class': 'icon', src: path+iconMap[icon][version]});
 
   }
 , getForecast: function(fc){

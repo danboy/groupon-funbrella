@@ -15,10 +15,13 @@ var Root = {
 , new: function(req, res){
     app.socket.on('connection', function(conn){
       conn.on('data',function(message){
-        var msg = JSON.parse(message);
-        console.log(msg);
-        if(msg.funbrella)
-          app.socket.emit('gimmie', msg.funbrella);
+        try{
+         var msg = JSON.parse(message);
+          if(msg.funbrella)
+            app.socket.emit('gimmie', msg.funbrella);
+        }catch(e){
+          console.log(e);
+        }
       });
     });
 
