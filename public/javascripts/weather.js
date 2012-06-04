@@ -23,7 +23,21 @@ Get.Weather.prototype = {
     cb(fragment);
   }
 , getIcon: function(icon){
-    var iconMap = {'clear': ['sunny.png'],'sunny': ['sunny.png'], 'mostlysunny': ['cloudy1.png'],'partlycloudy':['cloudy2.png'], partlysunny: ['cloudy3.png'], mostlycloudy: ['cloudy4.png'], cloudy: ['cloudy5.png'],sunny: ['sunny.png'], tstorms: ['tstorm2.png'] }
+    var iconMap = { 'chancerain': ['shower1.png']
+                  , 'chancetstorms': ['tstorm1.png']
+                  , 'clear': ['sunny.png']
+                  , 'sunny': ['sunny.png']
+                  , 'rain': ['shower3.png']
+                  , 'mostlysunny': ['cloudy1.png']
+                  , 'partlycloudy':['cloudy2.png']
+                  , 'partlysunny': ['cloudy3.png']
+                  , 'mostlycloudy': ['cloudy4.png']
+                  , 'fog': ['fog.png']
+                  , 'hazy': ['fog.png']
+                  , 'unknown': ['dunno.png']
+                  , 'cloudy': ['cloudy5.png']
+                  , 'sunny': ['sunny.png']
+                  , 'tstorms': ['tstorm2.png'] }
     var path = '/images/weather/tick/';
     return $('<img/>',{'class': 'icon', src: path+iconMap[icon][Math.floor(Math.random()*iconMap[icon].length)]});
 
