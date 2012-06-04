@@ -1,0 +1,11 @@
+ul#actions
+  li.button( data-action = '{"funbrella": { "html": "<div class=\'neet\'></div>", "css": ".neet{ opacity:.8;}", "js": "var w = new Get.Weather(\'.neet\');"}}')
+    Get The weather
+  li.button( data-action = '{"random": { "html": "<div class=\'neet\'></div>", "css": ".neet{ opacity:.8;}", "js": "var w = new Get.Weather(\'.neet\');"}}')
+    Get some random old thing
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
+script( src="/javascripts/actions.js" )
+style
+  .sunburst{display:none;}
+  body section{position: static;}

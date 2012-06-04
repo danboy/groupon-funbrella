@@ -28,9 +28,9 @@ script
       }
     };
     sock.onclose = function(c){
-      console.log(c);
+      $('section').html('<blockquote>'+c.reason+'</blockquote>')
     };
-    console.log("new socket:",sock);
+    $.ajax('/')
   }
   connect();
   setInterval(function(){if(sock.readyState != 1){connect()};}, 30000);
