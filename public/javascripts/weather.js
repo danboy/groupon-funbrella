@@ -26,6 +26,9 @@ Get.Weather.prototype = {
     var time = time || 'day';
     var iconMap = { 'chancerain': ['shower1.png']
                   , 'chancetstorms': ['tstorm1.png']
+                  , 'chancesnow': ['snow4.png']
+                  , 'chanceflurries': ['snow1.png']
+                  , 'chancesleet': ['sleet.png']
                   , 'clear': ['sunny.png']
                   , 'sunny': ['sunny.png']
                   , 'rain': ['shower3.png']
@@ -38,6 +41,9 @@ Get.Weather.prototype = {
                   , 'unknown': ['dunno.png']
                   , 'cloudy': ['cloudy5.png']
                   , 'sunny': ['sunny.png']
+                  , 'snow': ['snow4.png']
+                  , 'flurries': ['snow1.png']
+                  , 'sleet': ['sleet.png']
                   , 'tstorms': ['tstorm2.png'] }
     var path = '/images/weather/tick/';
     var version = (time == 'day') ? '0' : '1';

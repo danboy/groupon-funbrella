@@ -4,9 +4,12 @@
 var Root = {
   index: function(req, res){
     app.socket.on('connection', function(conn){
-      app.socket.on('gimmie',function(data){
-        console.log(data);
-        conn.write(data);
+      app.socket.on('gimmie', function(data){
+        if(typeof(data) == 'object'){
+          conn.write(JSON.stringify(data));
+        }else{
+          conn.write(data);
+        }
         app.redis.sadd("funbrella", data);
       });
     });
@@ -30,7 +33,6 @@ var Root = {
 , list: function(req, res){
     app.redis.smembers( 'funbrella', function(err,results){
       if (err) throw err;
-      console.log(results);
       res.render('list', {results: results, title: 'old stuffs'});
     });
   }
@@ -42,6 +44,25 @@ var Root = {
     res.send(JSON.stringify(req.body.content)+'\n');
   }
 , get: function(req, res){
+  }
+, actions: function(req, res){
+    app.socket.on('connection', function(conn){
+      conn.on('data',function(message){
+        try{
+         var msg = JSON.parse(message);
+          if(msg.funbrella){
+            app.socket.emit('gimmie', msg.funbrella);
+          }else if(msg.random){
+            app.redis.srandmember( 'funbrella', function(err,result){
+              app.socket.emit('gimmie', result)
+            });
+          }
+        }catch(e){
+          console.log('actions',e);
+        }
+      });
+    });
+    res.render('actions',{title: 'stuff you can send'});
   }
 }
 module.exports = Root;

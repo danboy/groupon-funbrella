@@ -45,6 +45,7 @@ app.get('/update', routes.new);
 app.post('/send', routes.send);
 app.post('/get', routes.get);
 app.get('/list', routes.list);
+app.get('/actions', routes.actions);
 
 app.get('/test', function(req,res){res.render('test',{title: 'test'})})
 app.listen(3456, function(){

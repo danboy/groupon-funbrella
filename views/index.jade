@@ -9,6 +9,7 @@ script
     sock = {};
     sock = new SockJS(window.location.origin + '/gimmie/');
     sock.onmessage = function(m){
+      console.log(m.data);
       var data = JSON.parse(m.data);
       $('#style').remove();
       if(data.html){
@@ -35,5 +36,5 @@ script
   setInterval(function(){if(sock.readyState != 1){connect()};}, 30000);
 style
   body{
-  overflow: hidden;
+    overflow: hidden;
   }
