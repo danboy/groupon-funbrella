@@ -5,6 +5,7 @@ script( src="/javascripts/weather.js" )
 script( src="/javascripts/main.js" )
 script
   var sock;
+  var flagged = false;
   var connect = function(){
     sock = {};
     sock = new SockJS(window.location.origin + '/gimmie/');
@@ -17,7 +18,7 @@ script
       }
       if(data.js){
         try{
-        eval(data.js);
+          eval(data.js);
         }catch(e){
           console.log(e);
         }
@@ -30,7 +31,16 @@ script
     sock.onclose = function(c){
       $('section').html('<blockquote>'+c.reason+'</blockquote>')
     };
-    $.ajax('/')
+    if(flagged === true){
+      $.ajax({
+          url: '/'
+        , success: function(){
+          console.log('success');
+          sock.send({"random": { "html": "<div class=\'neet\'></div>", "css": ".neet{ opacity:.8;}", "js": "var w = new Get.Weather(\'.neet\');"}});
+        }
+      })
+    }
+    flagged = true;
   }
   connect();
   setInterval(function(){if(sock.readyState != 1){connect()};}, 30000);
