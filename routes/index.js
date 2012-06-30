@@ -3,25 +3,15 @@
  */
 var Root = {
   index: function(req, res){
-    app.socket.on('connection', function(conn){
-      app.socket.on('gimmie', function(data){
-        if(typeof(data) == 'object'){
-          conn.write(JSON.stringify(data));
-        }else{
-          conn.write(data);
-        }
-        app.redis.sadd("funbrella", data);
-      });
-    });
     res.render('index', { title: 'it\'s like watching on the tv.' })
   }
 , new: function(req, res){
     app.socket.on('connection', function(conn){
       conn.on('data',function(message){
         try{
-         var msg = JSON.parse(message);
+          var msg = JSON.parse(message);
           if(msg.funbrella)
-            app.socket.emit('gimmie', msg.funbrella);
+          app.socket.emit('gimmie', msg.funbrella);
         }catch(e){
           console.log(e);
         }
@@ -49,7 +39,7 @@ var Root = {
     app.socket.on('connection', function(conn){
       conn.on('data',function(message){
         try{
-         var msg = JSON.parse(message);
+          var msg = JSON.parse(message);
           if(msg.funbrella){
             app.socket.emit('gimmie', msg.funbrella);
           }else if(msg.random){

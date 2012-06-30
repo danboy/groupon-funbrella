@@ -36,6 +36,17 @@ var socket_opts = {sockjs_url: "http://majek.github.com/sockjs-client/sockjs-lat
 app.socket = sockjs.createServer(socket_opts);
 app.socket.installHandlers(app, {prefix: '/gimmie'} );
 
+app.socket.on('connection', function(conn){
+  app.socket.on('gimmie', function(data){
+    if(typeof(data) == 'object'){
+      conn.write(JSON.stringify(data));
+    }else{
+      conn.write(data);
+    }
+    app.redis.sadd("funbrella", data);
+  });
+});
+
 global.app = app;
 // Routes
 
