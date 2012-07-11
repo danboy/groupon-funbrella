@@ -66,3 +66,32 @@ Get.Weather.prototype = {
     return forecast;
   }
 }
+
+Get.News = function(container, category){
+  this.container = $(container);
+  this.fetch(category);
+  var self = this;
+  setInterval(function(){self.fetch(category);},60000);
+};
+
+Get.News.prototype ={
+  fetch: function(category){
+  var self = this;
+  $.ajax({  url: 'http://api.feedzilla.com/v1/categories/'+category+'/articles.json?count=10'
+          , dataType: "jsonp"
+          , success: function(data){
+            self.render(self.choose(data.articles));
+          }
+  });
+  }
+, choose: function(articles){
+    return articles[Math.floor((Math.random()*articles.length))];
+  }
+, render: function(article){
+  var snippet = $('<article />',{'class': 'news'});
+  var headline = $('<h2/>',{text: article.title});
+  var text = $('<p/>',{text: article.summary});
+  snippet.append(headline).append(text);
+  $(this.container).html(snippet);
+}
+}

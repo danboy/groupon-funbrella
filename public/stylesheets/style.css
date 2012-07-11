@@ -533,6 +533,16 @@ ul.forecast li h2{
   font-size: 50px;
   text-align: center;
 }
+.news{
+  text-align: left;
+}
+.news h2{
+  font-size: 38px;
+}
+.news p{
+  font-size: 28px;
+  font-weight: normal;
+}
 /* ANIMATE Add Ons. */
 .loop,
 .infinite{
