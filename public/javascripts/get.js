@@ -67,17 +67,24 @@ Get.Weather.prototype = {
   }
 }
 
-Get.News = function(container, category){
+Get.News = function(container, options){
   this.container = $(container);
-  this.fetch(category);
+  this.options = $.extend( {
+    category: 22
+  , type: 0
+  , query: 'groupon'
+  , count: 10
+  }, options);
+
+  this.buildUrl();
   var self = this;
-  setInterval(function(){self.fetch(category);},60000);
+  setInterval(function(){self.fetch();},60000);
 };
 
 Get.News.prototype ={
-  fetch: function(category){
+  fetch: function(){
   var self = this;
-  $.ajax({  url: 'http://api.feedzilla.com/v1/categories/'+category+'/articles.json?count=10'
+  $.ajax({  url: this.url 
           , dataType: "jsonp"
           , success: function(data){
             self.render(self.choose(data.articles));
@@ -92,6 +99,51 @@ Get.News.prototype ={
   var headline = $('<h2/>',{text: article.title});
   var text = $('<p/>',{text: article.summary});
   snippet.append(headline).append(text);
+  $(this.container).html(snippet);
+  }
+, buildUrl: function(){
+    switch(this.options.type){
+      case 'search':
+        this.url = 'http://api.feedzilla.com/v1/categories/'+this.options.category+'/articles/search.json?count='+this.options.count+'&q='+this.options.query
+        break;
+      default:
+        this.url = 'http://api.feedzilla.com/v1/categories/'+this.options.category+'/articles.json?count='+this.options.count
+        break;
+    }
+    this.fetch();
+
+  }
+}
+//http://imgur.com/gallery/top/all.xml
+//
+
+Get.Image = function(container){
+  this.container = $(container);
+  this.fetch();
+  var self = this;
+  setInterval(function(){self.fetch();},60000);
+};
+
+Get.Image.prototype ={
+  fetch: function(){
+  var self = this;
+  $.ajax({  url: 'http://imgur.com/gallery/top/all.json'
+          , dataType: "jsonp"
+          , success: function(data){
+            console.log(JSON.parse(data));
+            console.log(self.choose(data.gallery));
+          }
+          , error: function(e,o){
+            console.log(e,o);
+          }
+  });
+  }
+, choose: function(gallery){
+    return gallery[Math.floor((Math.random()*gallery.length))];
+  }
+, render: function(image){
+  console.log(image)
+  var snippet = $('<img />',{'class': 'imgur', 'src': image});
   $(this.container).html(snippet);
 }
 }

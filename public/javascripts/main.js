@@ -8,6 +8,7 @@ Funbrella.list = function(list,speed){
     $(item).hide();
     console.log(item);
   });
+  this.animate();
   setInterval(function(){this.animate()}.bind(this),speed);
 }
 

@@ -283,9 +283,13 @@ form div input {
   -webkit-transition: border 1s;
   -o-transition: border 1s;
 }
-form div textarea{
-  width: 90%;
-  height: 200px;
+#editor{
+  position: relative;
+  width: 95%;
+  height: 600px;
+  line-height: 20px;
+  background: #333;
+  color: #DDA;
 }
 form div input:invalid {
   border-color: #c33;

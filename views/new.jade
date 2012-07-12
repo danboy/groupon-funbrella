@@ -1,12 +1,12 @@
 form( action='/send', method='post' )
   div
-    textarea
+    textarea#editor
       { "html": "
       |<ul>
-      |  <li>
-      |    <img src='http://whiskey:3456/funbrella.png' class='animated pulse loop' />
-      |  </li>
-      |  <li class='animated flash loop'>remain calm.</li>
+      |&nbsp;&nbsp;<li>
+      |&nbsp;&nbsp;&nbsp;&nbsp;<img src='http://whiskey:3456/funbrella.png' class='animated pulse loop' />
+      |&nbsp;&nbsp;</li>
+      |&nbsp;&nbsp;<li class='animated flash loop'>witty text.</li>
       |</ul>"
       , "css": "ul li{ opacity:.5;}"
       , "js": "var slideshow = new Funbrella.list($('ul li'),4000);"}
