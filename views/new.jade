@@ -23,6 +23,16 @@ form( action='/send', method='post' )
   p
     | { "html": "&lt;div class='neet'&gt;&lt;/div&gt;", "css": ".neet{ opacity:.8;}", "js": "var w = new Get.Weather('.neet');"}
   p Or you can go to the <a href='/actions'>actions</a> page.
+  P Or the news:
+  p
+    | { "html": "&lt;div class='news'&gt;&lt;/div&gt;", "css": ".neet{ opacity:.8;}", "js": "var n = new Get.News('.news',{ category: 36 });"}
+  P that would return the news of the weird category. additional options are:
+  p
+    | {category: 22, type: 'search', query: 'groupon'}
+  p that would search for groupon articles in the business category. you can see all categories with:
+  p
+    | curl <a href='http://api.feedzilla.com/v1/categories.json'>http://api.feedzilla.com/v1/categories.json</a>
+  
 
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
 script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
