@@ -4,46 +4,40 @@ script( src="http://cdn.sockjs.org/sockjs-0.3.min.js" )
 script( src="/javascripts/get.js" )
 script( src="/javascripts/main.js" )
 script
-  var sock;
-  var flagged = false;
-  var connect = function(){
-    sock = {};
-    sock = new SockJS(window.location.origin + '/gimmie/');
-    sock.onmessage = function(m){
-      console.log(m.data);
-      var data = JSON.parse(m.data);
-      $('#style').remove();
-      if(data.html){
-        $('section').html(data.html)
-      }
-      if(data.js){
-        try{
-          eval(data.js);
-        }catch(e){
-          console.log(e);
+  var sock
+    , lastPost
+    , connect = function(){
+      sock = {};
+      sock = new SockJS(window.location.origin + '/gimmie/');
+      sock.onmessage = function(m){
+        var data = JSON.parse(m.data);
+        if(lastPost === JSON.stringify(data)){
+          console.log('duplicate',data);
+          return false;
         }
-      }
-      if(data.css){
-        var css = $('<style/>',{text: data.css, id: 'style'})
-        $('body').append(css);
-      }
-    };
-    sock.onclose = function(c){
-      $('section').html('<blockquote>'+c.reason+'</blockquote>')
-    };
-    if(flagged === true){
-      $.ajax({
-          url: '/'
-        , success: function(){
-          console.log('success');
-          sock.send({"random": { "html": "<div class=\'neet\'></div>", "css": ".neet{ opacity:.8;}", "js": "var w = new Get.Weather(\'.neet\');"}});
+        $('#style').remove();
+        if(data.html){
+          $('section').html(data.html)
         }
-      })
+        if(data.js){
+          try{
+            eval(data.js);
+          }catch(e){
+            console.log(e);
+          }
+        }
+        if(data.css){
+          var css = $('<style/>',{text: data.css, id: 'style'})
+          $('body').append(css);
+        };
+        lastPost = JSON.stringify(data);
+      };
+      sock.onclose = function(c){
+        $('section').html('<blockquote>'+c.reason+'</blockquote>')
+      };
     }
-    flagged = true;
-  }
-  connect();
   setInterval(function(){if(sock.readyState != 1){connect()};}, 30000);
+  connect();
 style
   body{
     overflow: hidden;

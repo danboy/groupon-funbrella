@@ -283,13 +283,20 @@ form div input {
   -webkit-transition: border 1s;
   -o-transition: border 1s;
 }
-#editor{
+#editor,
+.editor{
+  font-size: 16px;
   position: relative;
   width: 95%;
   height: 600px;
   line-height: 20px;
   background: #333;
   color: #DDA;
+  text-align: left;
+  white-space: pre;
+}
+.editor b{
+  color: #3A9;
 }
 form div input:invalid {
   border-color: #c33;

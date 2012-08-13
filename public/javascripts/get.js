@@ -6,14 +6,12 @@ Get.Weather = function(container){
   $.ajax({  url: url+'conditions/forecast/q/60647.json'
           , dataType: "jsonp"
           , success: function(data){
-            console.log(data,self);
             self.buildFragment(data.current_observation, data.forecast.simpleforecast, function(fragment){$(container).html(fragment)});
           }
   });
 }
 Get.Weather.prototype = {
   buildFragment: function( current, fc , cb ){
-    console.log(current.temp_f);
     fragment = $('<div/>');
     heading = $('<h1/>',{'class': 'temp', text: current.temp_f});
     heading.append($('<small/>',{'class': 'condition', text: current.weather}));
@@ -51,7 +49,6 @@ Get.Weather.prototype = {
 
   }
 , getForecast: function(fc){
-    console.log(fc);
     var self = this;
     var forecast = $('<ul/>',{'class': 'forecast'});
     $(fc.forecastday).each(function(index,day){
@@ -128,13 +125,17 @@ Get.Image.prototype ={
   fetch: function(){
   var self = this;
   $.ajax({  url: 'http://imgur.com/gallery/top/all.json'
-          , dataType: "jsonp"
+          , type: "GET"
+          , dataType: "json"
           , success: function(data){
             console.log(JSON.parse(data));
             console.log(self.choose(data.gallery));
           }
-          , error: function(e,o){
-            console.log(e,o);
+          , error: function(e,o,t){
+            console.log(e,o,t);
+          }
+          , complete: function(d){
+            console.log(d);
           }
   });
   }
@@ -142,8 +143,8 @@ Get.Image.prototype ={
     return gallery[Math.floor((Math.random()*gallery.length))];
   }
 , render: function(image){
-  console.log(image)
-  var snippet = $('<img />',{'class': 'imgur', 'src': image});
-  $(this.container).html(snippet);
+    console.log(image)
+    var snippet = $('<img />',{'class': 'imgur', 'src': image});
+    $(this.container).html(snippet);
 }
 }
